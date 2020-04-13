@@ -82,7 +82,7 @@ class Admin:
         else:
             print("The account isn't connected")
 
-    @Utils.try_exc
+    @Utils.try_exc_none
     def terminal_info(self):
         """
         Returns a dataframe with all the terminal information

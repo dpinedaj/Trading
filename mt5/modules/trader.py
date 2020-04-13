@@ -15,7 +15,7 @@ class Trader:
         """
         Method to extract the number of the total of opened orders.
         Usage:
-            >>>from trader import Trader as trad
+            >>>from modules.trader import Trader as trad
             >>>print(trad.num_orders())
             (0)
         """
@@ -25,11 +25,15 @@ class Trader:
     @Utils.try_exc_none
     def get_order(symbol=None, group=None, ticket=None):
         """
-        Method to get a specific order information
+        Method to get a specific order information from a symbol, a group
+        of symbols or an specific ticket
         Parameters:
-            symbol: 
-            group:
-            ticket:
+            symbol: Market symbol like 'EURUSD', 'EURJPY', 'AUDJPY'
+            group: A group of symbols like 'EUR*', '*USD'
+            ticket: A specific order id or ticket.
+        Usage:
+            >>>from modules.trader import Trader as trad
+            >>>print(trad.get_order(symbol='EURUSD'))
         """
         if symbol != None:
             orders = mt5.orders_get(symbol=symbol)
@@ -53,13 +57,15 @@ class Trader:
     @Utils.try_exc_none
     def check_margin(action, symbol, lot, ask):
         """
-        Method to calculate the amount of money that cost a size of lot with the current ask
+        Method to calculate the amount of money that cost a size of 
+        lot with the current ask
         Parameters:
-            action:
-            symbol:
-            lot:
-            ask:
+            action:Order type
+            symbol: Market symbol like 'EURUSD', 'EURJPY', 'AUDJPY'
+            lot: A float with the amount of the lot to order.
+            ask: Ask value from the symbol candlestick
         Usage:
+            >>>
             >>>
             >>>
         """
