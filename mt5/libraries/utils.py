@@ -24,3 +24,24 @@ class Utils:
 
             return value
         return new_function
+
+    @staticmethod
+    def try_exc_logs(f):
+        @wraps(f)
+        def new_function(self, *args, **kwargs):
+            value = None
+            exit_value = None
+            try:
+                value = f(self,*args, **kwargs)
+                if value != None:
+                    exit_value = self.cts.OK
+                    if self.logs != None:
+                        self.logs.info(self.msg_info)
+            except Exception as exc:
+                if self.logs != None:
+                    self.logs.error(self.msg_error)
+                    self.logs.error(str(exc))
+                exit_value = self.cts.ERROR
+
+            return value, exit_value
+        return new_function
