@@ -4,8 +4,8 @@ class Constants:
 
     def __init__(self):
 
-        self.__USR = 27401862
-        self.__PWD = 'dfkfksv1'
+        self.__USR = 0
+        self.__PWD = ""
         self.__TIMEZONE = pytz.timezone("America/Bogota")
 
 
